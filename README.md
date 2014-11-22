@@ -121,9 +121,7 @@ Authenticate yourself as admin
 -	!auth remove <nickname> : remove nickname from admins
 
 ```
-config.plugins.auth: {
-    strict: true
-}
+config.plugins.auth: true
 ```
 
 ### Cmd
