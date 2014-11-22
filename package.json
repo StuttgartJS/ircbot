@@ -1,0 +1,41 @@
+{
+    "name": "yaib",
+    "private": true,
+    "version": "1.0.0",
+    "description": "StuttgartJS IrcBot",
+    "author": "Sascha Droste <pid@posteo.net> (http://github.com/pid)",
+    "contributors": [
+        "X Ye <xy@example.com> (http://github.com/example)"
+    ],
+    "license": "MIT",
+    "homepage": "https://github.com/StuttgartJS/ircbot",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/StuttgartJS/ircbot.git"
+    },
+    "bugs": {
+        "url": "https://github.com/StuttgartJS/ircbot/issues"
+    },
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+        "cheerio": "^0.18.0",
+        "debug": "~2.1.0",
+        "feedparser": "^0.19.2",
+        "irc": "^0.3.7",
+        "irc-colors": "~1.1.0",
+        "leveldown": "^0.10.2",
+        "levelup": "^0.19.0",
+        "lodash": "~2.4.1",
+        "minimist": "~1.1.0",
+        "puid": "~1.0.0",
+        "request": "~2.47.0"
+    },
+    "devDependencies": {},
+    "keywords": [
+        "ircbot",
+        "stuttgartjs"
+    ]
+}
