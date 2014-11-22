@@ -22,11 +22,11 @@ function init(client, config) {
 
         var cmd = {};
         cmd.nick = nick ? nick.toLowerCase() : false;
-        cmd.isAdmin = config.admins.hasOwnProperty(cmd.nick) && config.admins[cmd.nick];
+        cmd.hasAdmin = config.admins.hasOwnProperty(cmd.nick);
 
-        debug(reqId, channel.toUpperCase() + ':' + nick.toUpperCase(), 'cmd.isAdmin=', cmd.isAdmin );
+        debug(reqId, channel.toUpperCase() + ':' + nick.toUpperCase(), 'cmd.hasAdmin=', cmd.isAdmin );
 
-        if (!utils.isBotMessage(cmd.nick, config) && !cmd.isAdmin) {
+        if (!utils.isBotMessage(cmd.nick, config) && !cmd.hasAdmin) {
 
             debug(reqId, 'SEND:WELCOME:');
 
