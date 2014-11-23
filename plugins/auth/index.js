@@ -175,7 +175,7 @@ function init(client, config) {
         ) {
 
             config.admins[cmd.user] = true;
-            sendMessage(reqId, client, cmd.user, 'AUTH: changed role to admin');
+            //sendMessage(reqId, client, cmd.user, 'AUTH: changed role to admin');
         }
 
     });
