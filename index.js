@@ -60,7 +60,7 @@ var client = new irc.Client(
 debug('START:', argv);
 
 client.addListener('error', function (error) {
-    console.error('MAIN:CLIENT:ERROR:', error);
+    console.error('MAIN:ERROR:', error);
 });
 
 client.addListener('registered', function (raw) {
@@ -68,10 +68,10 @@ client.addListener('registered', function (raw) {
     debug(config.irc.server);
 
     if (process.env.IRCBOT_NICKSERV) {
-        debug('REGISTERED:IRCBOT_NICKSERV', process.env.IRCBOT_NICKSERV);
+        debug('MAIN:REGISTERED:IRCBOT_NICKSERV', process.env.IRCBOT_NICKSERV);
         client.say('NickServ', 'identify ' + process.env.IRCBOT_NICKSERV);
     } else {
-        console.error('MAIN:CLIENT:REGISTERED:WARNING: IRCBOT NICKSERV PASSWORD missing - set env IRCBOT_NICKSERV');
+        console.error('MAIN:REGISTERED:WARNING: IRCBOT NICKSERV PASSWORD missing - set env IRCBOT_NICKSERV');
     }
 });
 
@@ -84,6 +84,6 @@ plugins.forEach(function (plugin) {
 
     if (config.plugins[plugin] !== false && fs.existsSync(pluginDir)) {
         require(pluginDir).init(client, config);
-        debug('LOADED:', plugin);
+        debug('PLUGIN:LOADED', plugin);
     }
 });
