@@ -28,7 +28,7 @@ module.exports = {
 
         auth: true,
         cmd: true,
-        
+
         hello: {
             salutation: 'Welcome, ',
             message: 'Send "!help" to get help'
@@ -175,7 +175,9 @@ module.exports = {
                     //
                     'http://www.heydonworks.com/feed',
                     //
-                    'http://www.designmadeingermany.de/feed/'
+                    'http://www.designmadeingermany.de/feed/',
+                    //
+                    'http://www.talentbuddy.co/blog/rss/'
                 ]
         }
     },
