@@ -125,7 +125,7 @@ function init(client, config) {
                 }
 
                 debug(reqId, 'ADMINS:', config.admins);
-                
+
                 break;
 
             default:
@@ -233,9 +233,9 @@ function init(client, config) {
 
             config.admins[cmd.nick] = false;
 
-            debug(reqId, 'ADMIN:RIGHTS:REMOVED' + cmd.nick.toUpperCase());
+            debug(reqId, 'ADMIN:RIGHTS:REMOVED:' + cmd.nick.toUpperCase());
         } else {
-            debug(reqId, 'ADMIN:RIGHTS:UNCHANGED' + cmd.nick.toUpperCase());
+            debug(reqId, 'ADMIN:RIGHTS:UNCHANGED:' + cmd.nick.toUpperCase());
         }
     });
 

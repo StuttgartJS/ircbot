@@ -36,7 +36,7 @@ var debug = require('debug')('RSS:EMITTER:');
 
         RssEmitter.prototype["import"] = function (url) {
 
-            var debug = require('debug')('RSS:IMPORT:');
+            var debug = require('debug')('RSS:EMITTER:IMPORT:');
 
             var fp, pipe, req, self;
 
@@ -51,12 +51,12 @@ var debug = require('debug')('RSS:EMITTER:');
             pipe = req.pipe(fp);
 
             pipe.on('error', function (error) {
-                console.error('PLUGIN: RSS: ERROR: EMITTER:', error);
+                console.error('PLUGIN:RSS:EMITTER:ERROR', error);
             });
 
             return pipe.on('readable', function () {
 
-                var debug = require('debug')('RSS:IMPORT:READABLE:');
+                var debug = require('debug')('RSS:EMITTER:IMPORT:READABLE:');
 
                 var item;
 
@@ -64,7 +64,7 @@ var debug = require('debug')('RSS:EMITTER:');
 
                 return self.db.get(item.guid, function (err, value) {
 
-                    var debug = require('debug')('RSS:IMPORT:READABLE:DB');
+                    var debug = require('debug')('RSS:EMITTER:IMPORT:READABLE:DB');
 
                     debug('search item.guid=', item.guid);
 
@@ -76,7 +76,7 @@ var debug = require('debug')('RSS:EMITTER:');
 
                         return self.db.put('id\x00' + item.id, item, function (err) {
 
-                            var debug = require('debug')('RSS:IMPORT:READABLE:DB:PUT:ID');
+                            var debug = require('debug')('RSS:EMITTER:IMPORT:READABLE:DB:PUT:ID');
 
                             debug(
                                 'item.id=','id\x00' + item.id,
@@ -85,11 +85,10 @@ var debug = require('debug')('RSS:EMITTER:');
                             );
                             return self.db.put(item.guid, '{ "loaded": "true" }', function (err) {
 
-                                var debug = require('debug')('RSS:IMPORT:READABLE:DB:PUT:LOADED');
+                                var debug = require('debug')('RSS:EMITTER:IMPORT:READABLE:DB:PUT:LOADED');
 
                                 debug(
                                     'item.id=','id\x00' + item.id,
-                                    'put db:',
                                     'item.title=', item.title,
                                     'err=', err
                                 );
@@ -98,7 +97,7 @@ var debug = require('debug')('RSS:EMITTER:');
                             });
                         });
                     } else {
-                        debug = require('debug')('RSS:IMPORT:READABLE:DB:PUT:SKIPPED');
+                        debug = require('debug')('RSS:EMITTER:IMPORT:READABLE:DB:PUT:SKIPPED');
 
                         debug(item.guid,
                             'trigger' ,
