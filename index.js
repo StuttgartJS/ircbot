@@ -24,15 +24,6 @@ if (argv.config) {
     config = require('./config');
 }
 
-if (process.env.IRCBOT_PLUGINS) {
-    plugins = process.env.IRCBOT_PLUGINS.replace(/\s+/g, '').split(',');
-    debug('USE:ENV:IRCBOT_PLUGINS:' + plugins);
-
-} else {
-    plugins = fs.readdirSync('./plugins');
-    debug('USE:ALL:PLUGINS:', plugins);
-}
-
 if (process.env.IRCBOT_NICKNAME) {
     config.irc.nickname = process.env.IRCBOT_NICKNAME;
     debug('ENV:IRCBOT_NICKNAME:' + config.irc.nickname);
@@ -68,6 +59,7 @@ client.addListener('registered', function (raw) {
     debug(config.irc.server);
 
     if (process.env.IRCBOT_NICKSERV) {
+
         debug('MAIN:REGISTERED:IRCBOT_NICKSERV', process.env.IRCBOT_NICKSERV);
         client.say('NickServ', 'identify ' + process.env.IRCBOT_NICKSERV);
     } else {
@@ -75,14 +67,18 @@ client.addListener('registered', function (raw) {
     }
 });
 
+plugins = fs.readdirSync('./plugins');
 config.plugins.debug = (process.env.IRCBOT_DEBUG || process.env.DEBUG) || false;
+
+debug('AVAILABLE:PLUGINS:', plugins);
 
 // load plugins
 plugins.forEach(function (plugin) {
 
     var pluginDir = './plugins/' + plugin + '/';
 
-    if (config.plugins[plugin] !== false && fs.existsSync(pluginDir)) {
+    if (config.plugins[plugin] && fs.existsSync(pluginDir)) {
+        
         require(pluginDir).init(client, config);
         debug('PLUGIN:LOADED', plugin);
     }

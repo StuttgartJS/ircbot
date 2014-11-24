@@ -34,10 +34,6 @@ Plugins
 
 Activate plugins in your custom config.js or via environment variables.
 
-```
-$ set IRCBOT_PLUGINS "meetup,echo"
-```
-
 ### RSS
 
 retrieve feeds and send new items to the channel(s)
@@ -121,7 +117,11 @@ Authenticate yourself as admin
 -	!auth remove <nickname> : remove nickname from admins
 
 ```
-config.plugins.auth: true
+config.plugins.auth: true  // default notify: false
+
+config.plugins.auth: {
+    notify: false
+}
 ```
 
 ### Cmd
