@@ -74,7 +74,7 @@ function init(client, config) {
 
                     db.get(data, function (err, url) {
 
-                        sendMessage(reqId, client, to, url);
+                        sendMessage(reqId, client, cmd.to, url);
                     });
                 });
 
