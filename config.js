@@ -31,6 +31,8 @@ module.exports = {
         },
         cmd: true,
 
+        help: true,
+
         hello: {
             salutation: 'Welcome, ',
             message: 'Send "!help" to get help'
