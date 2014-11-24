@@ -32,7 +32,7 @@ $ node index.js --config myConfig.js
 Plugins
 =======
 
-Activate plugins in your custom config.js or via environment variables.
+Activate plugins in your custom config.js
 
 ### RSS
 
