@@ -187,8 +187,8 @@ function init(client, config) {
         var reqId = puid.generate();
 
         var cmd = {};
-        cmd.oldnick = oldnick && oldnick.length ? oldnick.toLowerCase() : false;
-        cmd.newnick = newnick && newnick.length ? newnick.toLowerCase() : false;
+        cmd.oldnick = oldnick ? oldnick.toLowerCase() : false;
+        cmd.newnick = newnick ? newnick.toLowerCase() : false;
         cmd.isAdmin = cmd.oldnick ? config.admins[cmd.oldnick] : false;
 
         if (!cmd.oldnick || !cmd.newnick || !cmd.isAdmin) {
@@ -197,23 +197,14 @@ function init(client, config) {
             return;
         }
 
-        debug = require('debug')('AUTH:NICK:RENAME:');
+        debug(reqId, 'cmd=', cmd.oldnick);
 
-        debug(reqId, 'cmd=', cmd);
+        deauthAdmin(reqId, config, cmd.oldnick);
 
-        if (cmd.isAdmin) {
+        config.admins[cmd.newnick] = true;
 
-            config.admins[cmd.oldnick] = false;
+        debug(reqId, 'ADMIN:RIGHTS:ADDED:' + cmd.newnick.toUpperCase());
 
-            debug(reqId, 'ADMIN:RIGHTS:DISABLED:' + cmd.oldnick.toUpperCase());
-
-        } else {
-            debug(reqId, 'ADMIN:RIGHTS:UNCHANGED:' + cmd.oldnick.toUpperCase());
-        }
-
-        debug(reqId, 'SEND:NICKSERV:ACC:NEWNICK:' + cmd.newnick.toUpperCase());
-
-        client.say('NickServ', 'ACC' + ' ' + cmd.newnick);
     });
 
     client.addListener('part', function (channel, nick, reason, raw) {
@@ -222,21 +213,9 @@ function init(client, config) {
 
         var reqId = puid.generate();
 
-        var cmd = {};
-        cmd.nick = nick && nick.length ? nick.toLowerCase() : false;
-        cmd.channel = channel ? channel.toLowerCase() : false;
-        cmd.isAdmin = config.admins[cmd.nick];
+        debug(reqId, 'nick=', nick);
 
-        debug(reqId, 'cmd=', cmd);
-
-        if (cmd.isAdmin) {
-
-            config.admins[cmd.nick] = false;
-
-            debug(reqId, 'ADMIN:RIGHTS:REMOVED:' + cmd.nick.toUpperCase());
-        } else {
-            debug(reqId, 'ADMIN:RIGHTS:UNCHANGED:' + cmd.nick.toUpperCase());
-        }
+        deauthAdmin(reqId, config, nick);
     });
 
     client.addListener('quit', function (nick, reason, channels, raw) {
@@ -245,23 +224,31 @@ function init(client, config) {
 
         var reqId = puid.generate();
 
-        var cmd = {};
-        cmd.nick = nick ? nick.toLowerCase() : false;
-        cmd.channels = channels;
-        cmd.isAdmin = config.admins[cmd.nick];
+        debug(reqId, 'nick=', nick);
 
-        debug(reqId, 'cmd=', cmd);
-
-        if (cmd.isAdmin) {
-
-            config.admins[cmd.nick] = false;
-
-            debug(reqId, 'ADMIN:RIGHTS:REMOVED' + cmd.nick.toUpperCase());
-        } else {
-            debug(reqId, 'ADMIN:RIGHTS:UNCHANGED' + cmd.nick.toUpperCase());
-        }
-
+        deauthAdmin(reqId, config, nick);
     });
+}
+
+function deauthAdmin(reqId, config, nick) {
+
+    var debug = require('debug')('AUTH:DEAUTH:');
+
+    var cmd = {};
+    cmd.nick = nick ? nick.toLowerCase() : false;
+    cmd.isAdmin = config.admins[cmd.nick];
+
+    debug(reqId, 'cmd=', cmd);
+
+    if (cmd.isAdmin) {
+
+        config.admins[cmd.nick] = false;
+
+        debug(reqId, 'ADMIN:RIGHTS:REMOVED:' + cmd.nick.toUpperCase());
+    } else {
+        debug(reqId, 'ADMIN:RIGHTS:UNCHANGED:' + cmd.nick.toUpperCase());
+    }
+
 }
 
 function sendMessage(reqId, client, to, msg) {
