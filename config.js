@@ -22,11 +22,13 @@ module.exports = {
             messageSplit: 512
         }
     },
-    // all plugins are enabled by default
+
     plugins: {
         example: false, // disabled
 
-        auth: true,
+        auth: {
+            notify: false
+        },
         cmd: true,
 
         hello: {

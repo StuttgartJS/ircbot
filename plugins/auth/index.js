@@ -180,18 +180,27 @@ function init(client, config) {
         debug(reqId, 'cmdline=', cmdline, 'cmd=', cmd);
 
         if (
+            cmd.hasAdmin &&
             cmd.cmdlineLength === 3 || cmd.cmdlineLength === 4 &&
             utils.isBotMessage(to, config) &&
             cmd.nick === cmd.nickserv &&
             cmd.nickservAcc === cmdline[1].toUpperCase() &&
             cmd.nickservStatus === parseInt(cmdline[2], 10) &&
             !cmd.isAdmin &&
-            hasAdmin &&
             cmd.user
         ) {
 
             config.admins[cmd.user] = true;
-            //sendMessage(reqId, client, cmd.user, 'AUTH: changed role to admin');
+
+            if (config.plugins && config.plugins.auth && config.plugins.auth.notify) {
+
+                debug(reqId, 'SEND:NOTIFY:TRUE', cmd.user);
+
+                sendMessage(reqId, client, cmd.user, 'AUTH: changed role to admin');
+
+            } else {
+                debug(reqId, 'SEND:NOTIFY:FALSE', cmd.user);
+            }
         }
 
     });
