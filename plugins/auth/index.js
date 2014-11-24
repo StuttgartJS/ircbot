@@ -136,6 +136,22 @@ function init(client, config) {
         }
     });
 
+    client.addListener('names', function (channel, nicks) {
+
+        var debug = require('debug')('AUTH:NAMES:');
+
+        var reqId = puid.generate();
+
+        debug(reqId, nicks);
+
+        Object.keys(nicks).forEach(function (nick) {
+
+            debug(reqId, 'SEND:ACC:REQUEST:' + nick.toUpperCase());
+
+            client.say('NickServ', 'ACC' + ' ' + nick);
+        });
+    });
+
     client.addListener('notice', function (nick, to, message, raw) {
 
         var debug = require('debug')('AUTH:NOTICE:');
@@ -145,7 +161,7 @@ function init(client, config) {
 
         var cmd = {};
         cmd.cmdlineLength = cmdline.length;
-        cmd.nick = nick && nick.length ? nick.toLowerCase() : false;
+        cmd.nick = nick ? nick.toLowerCase() : false;
 
         // early return
         if (cmd.cmdlineLength > 4 || !cmd.nick) {
