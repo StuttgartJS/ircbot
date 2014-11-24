@@ -177,7 +177,9 @@ module.exports = {
                     //
                     'http://www.designmadeingermany.de/feed/',
                     //
-                    'http://www.talentbuddy.co/blog/rss/'
+                    'http://www.talentbuddy.co/blog/rss/',
+                    //
+                    'http://javascriptweekly.com/rss/2635acpd'
                 ]
         }
     },
@@ -195,15 +197,21 @@ module.exports = {
         'dypsilon': false,
         'dypsilon_': false,
 
+        'hellomichibye': false,
+        'hellomichibye_': false,
+
+        'hobbyquaker': false,
+        'hobbyquaker_': false,
+
         'jorin': false,
+
+        'markus-': false,
 
         'xat-': false,
 
         'xorrr': false,
-        'xorrr_': false,
+        'xorrr_': false
 
-        'hobbyquaker': false,
-        'hobbyquaker_': false
     }
 
 };
