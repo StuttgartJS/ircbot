@@ -183,7 +183,9 @@ module.exports = {
                     //
                     'http://www.talentbuddy.co/blog/rss/',
                     //
-                    'http://javascriptweekly.com/rss/2635acpd'
+                    'http://javascriptweekly.com/rss/2635acpd',
+                    //
+                    'http://angularjs.de/feed'
                 ]
         }
     },
