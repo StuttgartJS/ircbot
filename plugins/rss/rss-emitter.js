@@ -18,13 +18,13 @@ var debug = require('debug')('RSS:EMITTER:');
         };
 
     Puid = require('puid');
-    puid = new Puid(true);
-
     request = require('request');
     Feedparser = require('feedparser');
     levelup = require('levelup');
     EventEmitter = require('events').EventEmitter;
     url = require('url');
+
+    puid = new Puid(true);
 
     RssEmitter = (function (_super) {
 
@@ -37,7 +37,6 @@ var debug = require('debug')('RSS:EMITTER:');
         RssEmitter.prototype["import"] = function (url) {
 
             var debug = require('debug')('RSS:EMITTER:IMPORT:');
-
             var fp, pipe, req, self;
 
             debug('request received for', 'url=', url);
@@ -57,7 +56,6 @@ var debug = require('debug')('RSS:EMITTER:');
             return pipe.on('readable', function () {
 
                 var debug = require('debug')('RSS:EMITTER:IMPORT:READABLE:');
-
                 var item;
 
                 item = this.read();

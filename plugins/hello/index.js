@@ -1,5 +1,4 @@
 var debug = require('debug')('HELLO:');
-
 var utils = require('../../lib/utils');
 var color = require('irc-colors');
 var Puid = require('puid');
@@ -9,18 +8,17 @@ debug('Plugin loaded');
 
 function init(client, config) {
 
-    debug('init');
-
     var salutation = process.env.IRCBOT_HELLO_SALUTION || config.plugins.hello.salutation || 'Hi';
     var helloMessage = process.env.IRCBOT_HELLO_MESSAGE || config.plugins.hello.message || 'Send !help to me.';
+
+    debug('init');
 
     client.addListener('join', function (channel, nick, raw) {
 
         var debug = require('debug')('HELLO:JOIN:');
-
         var reqId = puid.generate();
-
         var cmd = {};
+
         cmd.nick = nick ? nick.toLowerCase() : false;
         cmd.hasAdmin = config.admins.hasOwnProperty(cmd.nick);
 

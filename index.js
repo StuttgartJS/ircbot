@@ -1,12 +1,9 @@
 #!/usr/bin/env node
 
 var debug = require('debug')('MAIN');
-
 var fs = require('fs');
 var irc = require('irc');
-
 var argv = require('minimist')(process.argv.slice(2));
-
 var config = {};
 var plugins = [];
 
@@ -78,7 +75,7 @@ plugins.forEach(function (plugin) {
     var pluginDir = './plugins/' + plugin + '/';
 
     if (config.plugins[plugin] && fs.existsSync(pluginDir)) {
-        
+
         require(pluginDir).init(client, config);
         debug('PLUGIN:LOADED', plugin);
     }

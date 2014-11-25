@@ -1,5 +1,4 @@
 var debug = require('debug')('DEBUG:');
-
 var utils = require('../../lib/utils');
 var color = require('irc-colors');
 

@@ -1,5 +1,4 @@
 var debug = require('debug')('CMD:');
-
 var utils = require('../../lib/utils');
 var color = require('irc-colors');
 var Puid = require('puid');
@@ -14,9 +13,7 @@ function init(client, config) {
     client.addListener('message', function (nick, to, message, raw) {
 
         var debug = require('debug')('CMD:MESSAGE:');
-
         var reqId = puid.generate();
-
         var cmdline = utils.filterCommands(message);
         var cmd = {};
 

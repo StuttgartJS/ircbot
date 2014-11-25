@@ -1,7 +1,5 @@
 var debug = require('debug')('URLS:');
-
 var utils = require('../../lib/utils');
-
 var color = require('irc-colors');
 var cheerio = require('cheerio');
 var request = require('request');
@@ -12,20 +10,22 @@ debug('Plugin loaded');
 
 function init(client, config) {
 
-    debug('init');
-
     var levelup = require('levelup');
     var db = levelup(__dirname + '/../../data/urls', {
         keyEncoding: 'binary'
     });
 
+    debug('init');
+
     client.addListener('message', function (nick, to, message, raw) {
 
         var debug = require('debug')('URLS:MESSAGE:');
-
         var reqId = puid.generate();
         var cmdline = utils.filterCommands(message);
         var re = /http[s]?\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/g;
+        var cmd = {};
+        var urls = [];
+        var match;
 
         if (!utils.isCmd('!urls', cmdline) && !re.test(message)) {
 
@@ -33,16 +33,12 @@ function init(client, config) {
             return;
         }
 
-        var cmd = {};
         cmd.cmdlineLength = cmdline.length;
         cmd.limit = cmd.cmdlineLength > 1 ? parseInt(cmdline[1], 10) : config.plugins.urls.defaultLimit || 3;
         cmd.maxLimit = config.plugins.urls.maxLimit || 42;
 
         cmd.nick = nick ? nick.toLowerCase() : false;
         cmd.to = to ? to.toLowerCase() : false;
-
-        var urls = [];
-        var match;
 
         if (utils.isCmd('!urls', cmdline)) {
 

@@ -1,5 +1,4 @@
 var debug = require('debug')('HELP:');
-
 var utils = require('../../lib/utils');
 var color = require('irc-colors');
 var pkg = require('../../package.json');
@@ -10,14 +9,11 @@ debug('Plugin loaded');
 
 function init(client, config) {
 
-    debug('init');
-
-    debug = require('debug')('HELP:PLUGINS:');
-
     var fs = require('fs');
-
     var plugins = fs.readdirSync(__dirname + '/../../plugins');
     var helper = {};
+
+    debug('init');
 
     plugins.forEach(function (plugin) {
 
@@ -40,9 +36,7 @@ function init(client, config) {
     client.addListener('message', function (nick, to, message, raw) {
 
         var debug = require('debug')('HELP:MESSAGE:');
-
         var reqId = puid.generate();
-
         var cmdline = utils.filterCommands(message);
         var cmd = {};
 

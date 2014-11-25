@@ -1,7 +1,5 @@
 var debug = require('debug')('MEETUP:');
-
 var utils = require('../../lib/utils');
-
 var color = require('irc-colors');
 var request = require('request');
 var Puid = require('puid');
@@ -12,17 +10,15 @@ debug('Plugin loaded');
 function init(client, config) {
 
     var debug = require('debug')('MEETUP');
-
-    debug('init');
-
     var api_key = process.env.IRCBOT_MEETUP_API_KEY || config.plugins.meetup.apiKey || '';
     var groupname = process.env.IRCBOT_MEETUP_GROUPNAME || config.plugins.meetup.groupname || '';
-
     var url = 'https://api.meetup.com/2/events?key=' +
         api_key +
         '&group_urlname=' +
         groupname +
         '&sign=true';
+
+    debug('init');
 
     if (!api_key || !groupname) {
 
@@ -42,9 +38,7 @@ function init(client, config) {
     client.addListener('message', function (nick, to, message, raw) {
 
         var debug = require('debug')('MEETUP:MESSAGE:');
-
         var reqId = puid.generate();
-
         var cmdline = utils.filterCommands(message);
         var cmd = {};
 

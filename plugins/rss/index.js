@@ -1,7 +1,5 @@
 var debug = require('debug')('RSS:');
-
 var utils = require('../../lib/utils');
-
 var color = require('irc-colors');
 var Puid = require('puid');
 var puid = new Puid(true);
@@ -10,27 +8,22 @@ debug('Plugin loaded');
 
 function init(client, config) {
 
-    debug('init');
-
     var timer = 0;
-
     var limit = 1;
     var maxLimit = config.plugins.rss.limit || 42;
-
     var RssEmitter = require('./rss-emitter');
-
     var levelup = require('levelup');
     var db = levelup(__dirname + '/../../data/rss', {
         keyEncoding: 'binary',
         valueEncoding: 'json'
     });
-
     var emitter = new RssEmitter(db);
+
+    debug('init');
 
     emitter.on('item:new', function (item) {
 
         var debug = require('debug')('RSS:ITEM:NEW:');
-
         var reqId = puid.generate();
 
         if (!config.plugins.rss.channels.length) {
@@ -55,7 +48,6 @@ function init(client, config) {
     client.addListener('ping', function (raw) {
 
         var debug = require('debug')('RSS:PING:');
-
         var reqId = puid.generate();
 
         debug(reqId, new Date(Date.now()), 'timer=', timer);
@@ -84,11 +76,8 @@ function init(client, config) {
     client.addListener('message', function (nick, to, message, raw) {
 
         var debug = require('debug')('RSS:MESSAGE:');
-
         var reqId = puid.generate();
-
         var cmdline = utils.filterCommands(message);
-
         var cmd = {};
 
         if (!utils.isCmd('!rss', cmdline)) {

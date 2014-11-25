@@ -1,7 +1,5 @@
 var debug = require('debug')('AUTH:');
-
 var utils = require('../../lib/utils');
-
 var color = require('irc-colors');
 var Puid = require('puid');
 var puid = new Puid(true);
@@ -28,6 +26,7 @@ function init(client, config) {
         var reqId = puid.generate();
         var cmdline = utils.filterCommands(message);
         var cmd = {};
+
         cmd.cmdlineLength = cmdline.length;
 
         // early return
@@ -139,7 +138,6 @@ function init(client, config) {
     client.addListener('names', function (channel, nicks) {
 
         var debug = require('debug')('AUTH:NAMES:');
-
         var reqId = puid.generate();
 
         debug(reqId, nicks);
@@ -155,11 +153,10 @@ function init(client, config) {
     client.addListener('notice', function (nick, to, message, raw) {
 
         var debug = require('debug')('AUTH:NOTICE:');
-
         var reqId = puid.generate();
         var cmdline = utils.filterCommands(message);
-
         var cmd = {};
+
         cmd.cmdlineLength = cmdline.length;
         cmd.nick = nick ? nick.toLowerCase() : false;
 
@@ -208,10 +205,9 @@ function init(client, config) {
     client.addListener('nick', function (oldnick, newnick, channels, raw) {
 
         var debug = require('debug')('AUTH:NICK:');
-
         var reqId = puid.generate();
-
         var cmd = {};
+
         cmd.oldnick = oldnick ? oldnick.toLowerCase() : false;
         cmd.newnick = newnick ? newnick.toLowerCase() : false;
         cmd.isAdmin = cmd.oldnick ? config.admins[cmd.oldnick] : false;
@@ -235,7 +231,6 @@ function init(client, config) {
     client.addListener('part', function (channel, nick, reason, raw) {
 
         var debug = require('debug')('AUTH:PART:');
-
         var reqId = puid.generate();
 
         debug(reqId, 'nick=', nick);
@@ -246,7 +241,6 @@ function init(client, config) {
     client.addListener('quit', function (nick, reason, channels, raw) {
 
         var debug = require('debug')('AUTH:QUIT:');
-
         var reqId = puid.generate();
 
         debug(reqId, 'nick=', nick);
@@ -258,8 +252,8 @@ function init(client, config) {
 function deauthAdmin(reqId, config, nick) {
 
     var debug = require('debug')('AUTH:DEAUTH:');
-
     var cmd = {};
+
     cmd.nick = nick ? nick.toLowerCase() : false;
     cmd.isAdmin = config.admins[cmd.nick];
 
