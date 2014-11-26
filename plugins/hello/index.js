@@ -1,3 +1,5 @@
+"use strict";
+
 var debug = require('debug')('HELLO:');
 var utils = require('../../lib/utils');
 var color = require('irc-colors');

@@ -1,3 +1,5 @@
+"use strict";
+
 var debug = require('debug')('RSS:');
 var utils = require('../../lib/utils');
 var color = require('irc-colors');
@@ -25,6 +27,7 @@ function init(client, config) {
 
         var debug = require('debug')('RSS:ITEM:NEW:');
         var reqId = puid.generate();
+        var channels;
 
         if (!config.plugins.rss.channels.length) {
             channels = config.irc.options.channels;

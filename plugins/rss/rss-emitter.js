@@ -1,7 +1,9 @@
+"use strict";
+
 var debug = require('debug')('RSS:EMITTER:');
 
 (function () {
-    var EventEmitter, RssEmitter, feedparser, levelup, request, Puid, puid,
+    var EventEmitter, RssEmitter, Feedparser, levelup, request, Puid, puid, url,
         __hasProp = {}.hasOwnProperty,
         __extends = function (child, parent) {
             for (var key in parent) {
