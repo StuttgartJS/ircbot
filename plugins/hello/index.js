@@ -24,7 +24,7 @@ function init(client, config) {
         cmd.nick = nick ? nick.toLowerCase() : false;
         cmd.hasAdmin = config.admins.hasOwnProperty(cmd.nick);
 
-        debug(reqId, channel.toUpperCase() + ':' + nick.toUpperCase(), 'cmd.hasAdmin=', cmd.isAdmin );
+        debug(reqId, channel.toUpperCase() + ':' + nick.toUpperCase(), 'cmd.hasAdmin=', cmd.isAdmin);
 
         if (!utils.isBotMessage(cmd.nick, config) && !cmd.hasAdmin) {
 

@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 "use strict";
 
 var debug = require('debug')('MAIN');
