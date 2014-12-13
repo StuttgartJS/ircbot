@@ -45,11 +45,11 @@ module.exports = {
 
         urls: {
             maxLimit: 42, // limit for rss latest
-            defaultLimit: 1, // limit for rss latest
+            defaultLimit: 1 // limit for rss latest
         },
 
-        /* for #StuttgartJS
-        rss: {
+        //* for #StuttgartJS
+        rssStuttgartJS: {
             // only activ in this channels
             channels: ['#StuttgartJS'],
             //channels: ['#StuttgartJS', '#StuttgartJS-Links'],
@@ -57,16 +57,16 @@ module.exports = {
             timer: 30,  // after 30 pings check feeds ~60min
             feeds: [
                 'http://echojs.com/rss',
-                // 'http://feeds.feedburner.com/dailyjs?format=xml',
-                // 'http://feeds.feedburner.com/html5rocks',
-                // 'http://www.reddit.com/r/javascript/.rss',
-                // 'http://howtonode.org/feed.xml',
-                // 'http://www.planetnodejs.com/feed',
-                // 'http://www.reddit.com/r/node/.rss',
-                // 'https://www.joyent.com/blog/feed',
+                 'http://feeds.feedburner.com/dailyjs?format=xml',
+                 'http://feeds.feedburner.com/html5rocks',
+                 'http://www.reddit.com/r/javascript/.rss',
+                 'http://howtonode.org/feed.xml',
+                 'http://www.planetnodejs.com/feed',
+                 'http://www.reddit.com/r/node/.rss',
+                 'https://www.joyent.com/blog/feed',
             ]
         },
-        /*/
+        //*/
 
         rss: {
             // only activ in this channels, if empty than active in all channels
@@ -185,7 +185,9 @@ module.exports = {
                     //
                     'http://javascriptweekly.com/rss/2635acpd',
                     //
-                    'http://angularjs.de/feed'
+                    'http://angularjs.de/feed',
+                    //
+                    'http://blogs.msdn.com/b/eternalcoding/rss.aspx'
                 ]
         }
     },
