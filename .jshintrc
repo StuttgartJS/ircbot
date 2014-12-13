@@ -10,6 +10,7 @@
     "devel": true,
     "jquery": true,
     "node": true,
+    "strict" : true,
     "globals": {
         "module": true,
         "require": true,
