@@ -212,10 +212,13 @@ module.exports = {
         'hobbyquaker_': false,
 
         'jorin': false,
+        'jorin_': false,
 
         'markus-': false,
+        'markus-_': false,
 
         'xat-': false,
+        'xat-_': false,
 
         'xorrr': false,
         'xorrr_': false
