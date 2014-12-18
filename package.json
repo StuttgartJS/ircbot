@@ -1,7 +1,7 @@
 {
     "name": "yaib",
     "private": true,
-    "version": "1.1.3",
+    "version": "1.1.4",
     "description": "StuttgartJS IrcBot",
     "author": "Sascha Droste <pid@posteo.net> (http://github.com/pid)",
     "contributors": [
@@ -31,7 +31,7 @@
         "lodash": "~2.4.1",
         "minimist": "~1.1.0",
         "puid": "~1.0.0",
-        "request": "~2.48.0"
+        "request": "^2.48.0"
     },
     "devDependencies": {},
     "keywords": [
