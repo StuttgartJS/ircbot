@@ -73,7 +73,7 @@ module.exports = {
             channels: ['#StuttgartJS-Links'],
             maxLimit: 42, // limit for rss latest
             defaultLimit: 3, // limit for rss latest
-            timer: 3, // after 3 pings check feeds
+            timer: 30, // after 120 pings check feeds  ~60min
             feeds: [
                 'http://echojs.com/rss',
                 'http://www.heise.de/open/news/news-atom.xml',
