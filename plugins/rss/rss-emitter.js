@@ -40,8 +40,9 @@ var debug = require('debug')('RSS:EMITTER:');
 
             var debug = require('debug')('RSS:EMITTER:IMPORT:');
             var fp, pipe, req, self;
+            var reqId = puid.generate();
 
-            debug('request received for', 'url=', url);
+            debug(reqId, 'request received for', 'url=', url);
 
             fp = new Feedparser({
                 addmeta: false
@@ -66,30 +67,35 @@ var debug = require('debug')('RSS:EMITTER:');
 
                     var debug = require('debug')('RSS:EMITTER:IMPORT:READABLE:DB');
 
-                    debug('search item.guid=', item.guid);
+                    debug(reqId, 'search item.guid=', item.guid);
 
                     if (err) {
 
                         item.id = puid.generate();
 
-                        debug('generated id=', item.guid, 'not listed');
+                        debug(reqId, 'generated id=', item.guid, 'not listed', 'link=', item.link);
 
                         return self.db.put('id\x00' + item.id, item, function (err) {
 
                             var debug = require('debug')('RSS:EMITTER:IMPORT:READABLE:DB:PUT:ID');
 
                             debug(
-                                'item.id=','id\x00' + item.id,
+                                'item.id=', 'id\x00' + item.id,
+                                'item.link=', item.link,
+                                'item.title=', item.title,
                                 'item.guid=', item.guid,
                                 'err=', err
                             );
+
                             return self.db.put(item.guid, '{ "loaded": "true" }', function (err) {
 
                                 var debug = require('debug')('RSS:EMITTER:IMPORT:READABLE:DB:PUT:LOADED');
 
                                 debug(
-                                    'item.id=','id\x00' + item.id,
+                                    'item.id=', 'id\x00' + item.id,
+                                    'item.link=', item.link,
                                     'item.title=', item.title,
+                                    'item.guid=', item.guid,
                                     'err=', err
                                 );
 
@@ -100,8 +106,9 @@ var debug = require('debug')('RSS:EMITTER:');
                         debug = require('debug')('RSS:EMITTER:IMPORT:READABLE:DB:PUT:SKIPPED');
 
                         debug(item.guid,
-                            'trigger' ,
+                            'trigger',
                             'item:skipped',
+                            'item.id=', 'id\x00' + item.id,
                             'item.title=', item.title,
                             'item.link=', item.link,
                             'item.guid=', item.guid
