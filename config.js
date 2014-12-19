@@ -110,7 +110,6 @@ module.exports = {
                 'http://ponyfoo.com/articles/feed',
                 'http://www.planetnodejs.com/feed',
                 'http://www.reddit.com/r/node/.rss',
-                'https://www.joyent.com/blog/feed',
                 'http://readwrite.com/rss.xml',
                 'http://www.bhorowitz.com/blog.rss',
                 'http://scotch.io/feed',
@@ -122,7 +121,6 @@ module.exports = {
                 'http://mobilewebweekly.co/rss/1cd436ic',
                 'http://jsforallof.us/feed.xml',
                 'http://grochtdreis.de/weblog/feed/',
-                'http://feeds.feedburner.com/atozcss',
                 'http://feeds.sidebar.io/SidebarFeed',
                 'http://blog.millermedeiros.com/feed/',
                 'http://www.merrickchristensen.com/atom.xml',
@@ -137,7 +135,6 @@ module.exports = {
                 'http://shitformakingwebsites.com/feed/',
                 'http://feeds2.feedburner.com/webresourcesdepot',
                 'http://rss.badassjs.com/',
-                'http://substack.net/blog.xml',
                 'https://www.seroundtable.com/index.rdf',
                 'http://msdn.microsoft.com/de-de/magazine/cc194384.aspx',
                 'http://feeds.feedblitz.com/derickbailey',
@@ -162,7 +159,10 @@ module.exports = {
                 'http://webdesignfromscratch.com/category/html-css/feed/',
                 'http://www.456bereastreet.com/feed.xml',
                 'http://feeds2.feedburner.com/ProBlogDesign',
-                'http://calendar.perfplanet.com/feed/'
+                'http://calendar.perfplanet.com/feed/',
+                'http://entreprogrammers.com/feed/',
+                'http://joshowens.me/rss/',
+                'http://www.internetworld.de/INTERNET-WORLD-Business-Newsfeed.html'
 
             ]
         }
