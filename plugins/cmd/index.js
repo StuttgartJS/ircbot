@@ -49,7 +49,7 @@ function init(client, config) {
         // cmd params
         // ==========
         cmd.param1 = cmd.receiver = cmd.cmdlineLength > 2 && cmdline[2] ? cmdline[2].toLowerCase() : false;
-        //cmd.param2 = cmd.PARAM2 = cmd.cmdlineLength > 3 && cmdline[3] ? cmdline[3].toLowerCase() : false;
+        cmd.param2 = cmd.nickname = cmd.cmdlineLength > 3 && cmdline[3] ? cmdline[3].toLowerCase() : false;
         cmd.msgMessage = cmd.cmdlineLength > 3 ? cmdline.slice(3).join(' ') : false;
 
         debug(reqId,
@@ -83,6 +83,55 @@ function init(client, config) {
 
                 break;
 
+            case 'op':
+            case '+op':
+            case '-op':
+
+                // !cmd op #channel nickname
+
+                if (cmd.command.indexOf('-') === 0) {
+                    cmd.mode = '-o';
+                } else {
+                    cmd.mode = '+o';
+                }
+
+                debug = require('debug')('CMD:MESSAGE:COMMAND:OP:' + cmd.mode.toUpperCase() + ':');
+
+
+                // !cmd op
+                if (cmd.cmdlineLength === 2) {
+                    cmd.nickname = cmd.nick;
+                    cmd.receiver = cmd.to;
+                }
+
+                // !cmd op nickname
+                if (cmd.cmdlineLength === 3) {
+                    cmd.nickname = cmd.receiver;
+                    cmd.receiver = cmd.to;
+                }
+
+                // !cmd op #channel
+                if (cmd.cmdlineLength === 3 && cmd.param1.indexOf('#') === 0) {
+                    cmd.nickname = cmd.nick;
+                    cmd.receiver = cmd.param1;
+                }
+
+                debug(reqId, cmd);
+
+                if (cmd.receiver.indexOf('#') === 0) {
+                    client.send('MODE', cmd.receiver, cmd.mode, cmd.nickname);
+
+                    debug(
+                        reqId,
+                        cmd.nick.toUpperCase() + ':' + cmd.receiver.toUpperCase() + ':' + cmd.receiver.toUpperCase()
+                    );
+
+                } else {
+                    debug(reqId, 'ABORTED');
+                }
+
+                break;
+
             default:
 
                 debug(reqId, 'DEFAULT:' + cmd.command.toUpperCase() + ':' + cmd.nick.toUpperCase());
@@ -101,8 +150,12 @@ function help() {
         color.bold.red.bgyellow('========================================================\n') +
         color.bold.red.bgyellow('CMD Plugin\n') +
         color.bold.red.bgyellow('========================================================\n') +
-        color.bold.red.bgyellow('!cmd msg #channel <your message> : send a message as bot\n') +
-        color.bold.red.bgyellow('!cmd admin <nickname>  1|0 : set admin rights\n') +
+        color.bold.red.bgyellow('!cmd msg <#channel> <your message> // send a message as bot\n') +
+        color.bold.red.bgyellow('!cmd admin <nickname> 1|0         // set admin rights\n') +
+        color.bold.red.bgyellow('!cmd [+]op <#channel> <nickname>   // give nickname channel-op on #channel\n') +
+        color.bold.red.bgyellow('!cmd [+]op <nickname>              // give nickname channel-op on current channel\n') +
+        color.bold.red.bgyellow('!cmd [+]op                         // give yourself channel-op on current channel \n') +
+        color.bold.red.bgyellow('!cmd -op  <#channel> <nickname>    // take nickname channel-op\n') +
         color.bold.red.bgyellow('========================================================')
     );
 }
