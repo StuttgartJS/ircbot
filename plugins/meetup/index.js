@@ -107,7 +107,7 @@ function help() {
         color.bold.red.bgyellow('===================================================\n') +
         color.bold.red.bgyellow('MEETUP Plugin\n') +
         color.bold.red.bgyellow('===================================================\n') +
-        color.bold.red.bgyellow('!meetup : Output info for next StuttgartJS Meetup\n') +
+        color.bold.red.bgyellow('!meetup // Output info for next StuttgartJS Meetup\n') +
         color.bold.red.bgyellow('===================================================')
     );
 }

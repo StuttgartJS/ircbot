@@ -135,8 +135,8 @@ function help() {
         color.bold.red.bgyellow('===================================================\n') +
         color.bold.red.bgyellow('URLS Plugin\n') +
         color.bold.red.bgyellow('===================================================\n') +
-        color.bold.red.bgyellow('!urls : get latest URLs\n') +
-        color.bold.red.bgyellow('!urls 5 : get the 5 latest URLs\n') +
+        color.bold.red.bgyellow('!urls // get latest URLs\n') +
+        color.bold.red.bgyellow('!urls 5 // get the 5 latest URLs\n') +
         color.bold.red.bgyellow('===================================================')
     );
 }

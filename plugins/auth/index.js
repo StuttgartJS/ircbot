@@ -287,10 +287,10 @@ function help() {
         color.bold.red.bgyellow('==============================================================\n') +
         color.bold.red.bgyellow('AUTH Plugin\n') +
         color.bold.red.bgyellow('==============================================================\n') +
-        color.bold.red.bgyellow('!auth : authenticate yourself as admin\n') +
-        color.bold.red.bgyellow('!auth list : list all authenticated admins\n') +
-        color.bold.red.bgyellow('!auth add <nickname> : authenticate nickname\n') +
-        color.bold.red.bgyellow('!auth remove <nickname> : remove nickname from admins\n') +
+        color.bold.red.bgyellow('!auth // authenticate yourself as admin\n') +
+        color.bold.red.bgyellow('!auth list // list all authenticated admins\n') +
+        color.bold.red.bgyellow('!auth add <nickname> // authenticate nickname\n') +
+        color.bold.red.bgyellow('!auth remove <nickname> // remove nickname from admins\n') +
         color.bold.red.bgyellow('==============================================================')
     );
 }

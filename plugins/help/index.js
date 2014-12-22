@@ -95,7 +95,8 @@ function help() {
         color.bold.red.bgyellow('===================================================\n') +
         color.bold.red.bgyellow('HELP Plugin\n') +
         color.bold.red.bgyellow('===================================================\n') +
-        color.bold.red.bgyellow('!help : list all plugins\n') +
+        color.bold.red.bgyellow('!help // list all plugins\n') +
+        color.bold.red.bgyellow('!help <command> // show command help\n') +
         color.bold.red.bgyellow('===================================================')
     );
 }

@@ -238,12 +238,12 @@ var help = function help() {
         color.bold.red.bgyellow('===================================================\n') +
         color.bold.red.bgyellow('RSS Plugin\n') +
         color.bold.red.bgyellow('===================================================\n') +
-        color.bold.red.bgyellow('!rss : print status (ON or OFF)\n') +
-        color.bold.red.bgyellow('!rss on : activate channel news posting\n') +
-        color.bold.red.bgyellow('!rss off : deactivate channel news posting\n') +
-        color.bold.red.bgyellow('!rss lastest : get latest news\n') +
-        color.bold.red.bgyellow('!rss lastest 5 : get the 5 latest news\n') +
-        color.bold.red.bgyellow('!rss feeds : list all feeds\n') +
+        color.bold.red.bgyellow('!rss // print status (ON or OFF)\n') +
+        color.bold.red.bgyellow('!rss on // activate channel news posting\n') +
+        color.bold.red.bgyellow('!rss off // deactivate channel news posting\n') +
+        color.bold.red.bgyellow('!rss lastest // get latest news\n') +
+        color.bold.red.bgyellow('!rss lastest 5 // get the 5 latest news\n') +
+        color.bold.red.bgyellow('!rss feeds // list all feeds\n') +
         color.bold.red.bgyellow('===================================================')
     );
 
