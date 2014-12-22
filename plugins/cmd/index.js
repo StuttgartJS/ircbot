@@ -147,16 +147,15 @@ function help() {
     debug('HELP');
 
     return (
-        color.bold.red.bgyellow('========================================================\n') +
+        color.bold.red.bgyellow('===============================================================================') +
         color.bold.red.bgyellow('CMD Plugin\n') +
-        color.bold.red.bgyellow('========================================================\n') +
+        color.bold.red.bgyellow('===============================================================================') +
         color.bold.red.bgyellow('!cmd msg <#channel> <your message> // send a message as bot\n') +
         color.bold.red.bgyellow('!cmd admin <nickname> 1|0 // set admin rights\n') +
-        color.bold.red.bgyellow('!cmd [+]op <#channel> <nickname> // give nickname channel-op on #channel\n') +
-        color.bold.red.bgyellow('!cmd [+]op <nickname> // give nickname channel-op on current channel\n') +
-        color.bold.red.bgyellow('!cmd [+]op // give yourself channel-op on current channel \n') +
-        color.bold.red.bgyellow('!cmd -op  <#channel> <nickname> // take nickname channel-op\n') +
-        color.bold.red.bgyellow('========================================================')
+        color.bold.red.bgyellow('!cmd [+|-]op <#channel> <nickname> // give|take nickname channel-op on #channel\n') +
+        color.bold.red.bgyellow('!cmd [+|-]op <nickname> // give|take nickname channel-op on current channel\n') +
+        color.bold.red.bgyellow('!cmd [+|-]op // give|take yourself channel-op on current channel \n') +
+        color.bold.red.bgyellow('===============================================================================')
     );
 }
 
