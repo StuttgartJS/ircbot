@@ -162,7 +162,8 @@ module.exports = {
                 'http://calendar.perfplanet.com/feed/',
                 'http://entreprogrammers.com/feed/',
                 'http://joshowens.me/rss/',
-                'http://www.internetworld.de/INTERNET-WORLD-Business-Newsfeed.html'
+                'http://www.internetworld.de/INTERNET-WORLD-Business-Newsfeed.html',
+                'http://developer.telerik.com/feed'
 
             ]
         }
