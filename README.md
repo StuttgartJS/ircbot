@@ -74,13 +74,13 @@ config.plugins.hello: {
 
 ```
 config.plugins.meetup: {
-    groupname: "stuttgartjs",
+    groupnames: ["stuttgartjs", "Web-Dev-BBQ-Stuttgart"],
     api_key: " set -x IRCBOT_MEETUP_API_KEY 'CHANGE_IT' "
 }
 ```
 
 ```
-$ set -x IRCBOT_MEETUP_GROUPNAME "stuttgartjs"
+$ set -x IRCBOT_MEETUP_GROUPNAMES "stuttgartjs,Web-Dev-BBQ-Stuttgart"
 $ set -x IRCBOT_MEETUP_API_KEY "CHANGE_IT"
 ```
 
