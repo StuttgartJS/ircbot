@@ -39,7 +39,7 @@ module.exports = {
         },
 
         meetup: {
-            groupname: 'stuttgartjs',
+            groupnames: ["stuttgartjs", "Web-Dev-BBQ-Stuttgart"],
             apiKey: '' // set -x IRCBOT_MEETUP_API_KEY 'CHANGE_IT' "
         },
 

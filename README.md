@@ -17,7 +17,7 @@ $ set IRCBOT_NICKSERV "nickserv-password"
 
 $ set IRCBOT_CHANNELS "#StuttgartJS,#StuttgartJS-Links"
 
-$ set IRCBOT_MEETUP_GROUPNAME "stuttgartjs"
+$ set IRCBOT_MEETUP_GROUPNAMES "stuttgartjs,Web-Dev-BBQ-Stuttgart"
 $ set IRCBOT_MEETUP_API_KEY "CHANGE_IT"
 
 $ set DEBUG=*    // see https://www.npmjs.org/package/debug
