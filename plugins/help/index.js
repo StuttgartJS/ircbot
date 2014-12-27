@@ -65,10 +65,10 @@ function init(client, config) {
             debug(reqId);
 
             client.say(nick,
-                color.bold.blue('============================================\n') +
+                color.bold.blue('==============================================\n') +
                 color.bold.blue('YAIB - v' + pkg.version + ' ' + pkg.homepage + '\n') +
                 color.bold.blue('!help : All ircbot functions\n') +
-                color.bold.blue('============================================\n')
+                color.bold.blue('==============================================\n')
             );
 
             plugins.forEach(function (plugin) {
@@ -82,7 +82,7 @@ function init(client, config) {
             });
 
             client.say(nick,
-                color.bold.blue('============================================\n'));
+                color.bold.blue('==============================================\n'));
         }
     });
 }
