@@ -159,6 +159,7 @@ function init(client, config) {
         var cmdline = utils.filterCommands(message);
         var cmd = {};
 
+        cmd.mode = '+o';
         cmd.cmdlineLength = cmdline.length;
         cmd.nick = nick ? nick.toLowerCase() : false;
 
@@ -190,6 +191,10 @@ function init(client, config) {
         ) {
 
             config.admins[cmd.user] = true;
+
+            config.irc.options.channels.forEach(function(channel){
+                client.send('MODE', channel, cmd.mode, cmd.user);
+            });
 
             if (config.plugins && config.plugins.auth && config.plugins.auth.notify) {
 
