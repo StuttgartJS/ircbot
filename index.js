@@ -1,6 +1,6 @@
 "use strict";
 
-var debug = require('debug')('MAIN');
+var debug = require('debug')('MAIN:');
 var fs = require('fs');
 var irc = require('irc');
 var argv = require('minimist')(process.argv.slice(2));
@@ -38,6 +38,18 @@ if (process.env.IRCBOT_CHANNELS) {
 
 // add ircbot nickname to allowed admins
 config.admins[config.irc.nickname.toLowerCase()] = true;
+
+// cleanup nicknames to lowercase
+for (var entry in config.admins) {
+
+    var key = entry.toLowerCase();
+    var val = config.admins[entry];
+
+    delete config.admins[entry];
+    config.admins[key] = val;
+}
+
+debug('CONFIG:ADMINS:', config.admins);
 
 var client = new irc.Client(
     config.irc.server,
