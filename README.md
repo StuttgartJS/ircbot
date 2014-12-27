@@ -38,14 +38,12 @@ Activate plugins in your custom config.js
 
 retrieve feeds and send new items to the channel(s)
 
-```
--	!rss : print status (ON or OFF)
--	!rss on : activate channel news posting
--	!rss off : deactivate channel news posting
--	!rss lastest : get latest news
--	!rss lastest 5 : get the 5 latest news
--	!rss feeds : list all feeds
-```
+-	!rss // print status (ON or OFF)
+-	!rss on // activate channel news posting
+-	!rss off // deactivate channel news posting
+-	!rss lastest // get latest news
+-	!rss lastest 5 // get the 5 latest news
+-	!rss feeds // list all feeds
 
 ```
 config.plugins.rss: {
@@ -70,7 +68,7 @@ config.plugins.hello: {
 
 ### Meetup
 
--	!meetup : Output info for next StuttgartJS Meetup
+-	!meetup // Output info for next StuttgartJS Meetup
 
 ```
 config.plugins.meetup: {
@@ -88,8 +86,8 @@ $ set -x IRCBOT_MEETUP_API_KEY "CHANGE_IT"
 
 Save URLs from channel messages
 
--	!urls : get latest URLs
--	!urls 5 : get the 5 latest URLs
+-	!urls // get latest URLs
+-	!urls 5 // get the 5 latest URLs
 
 ```
 config.plugins.urls: {
@@ -111,10 +109,10 @@ config.plugins.help: true
 
 Authenticate yourself as admin
 
--	!auth : authenticate yourself as admin
--	!auth list : list all authenticated admins
--	!auth add <nickname> : authenticate nickname
--	!auth remove <nickname> : remove nickname from admins
+-	!auth // authenticate yourself as admin
+-	!auth list // list all authenticated admins
+-	!auth add <nickname> // authenticate nickname
+-	!auth remove <nickname> // remove nickname from admins
 
 ```
 config.plugins.auth: true  // default notify: false
@@ -128,11 +126,16 @@ config.plugins.auth: {
 
 Send commands to the bot (you must be auth'en as admin)
 
--	!cmd msg <#channel> <your message> : send a message as bot
+-	!cmd msg <#channel> <your message> // send a message as bot
 
 ```
 config.plugins.cmd: true
 ```
+
+-	!cmd admin <nickname> 1|0 // set admin rights
+-	!cmd [+|-]op <#channel> <nickname> // give|take nickname channel-op on #channel
+-	!cmd [+|-]op <nickname> // give|take nickname channel-op on current channel
+-	!cmd [+|-]op // give|take yourself channel-op on current channel
 
 ### Debug
 
