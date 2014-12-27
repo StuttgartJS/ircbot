@@ -163,13 +163,14 @@ module.exports = {
                 'http://entreprogrammers.com/feed/',
                 'http://joshowens.me/rss/',
                 'http://www.internetworld.de/INTERNET-WORLD-Business-Newsfeed.html',
-                'http://developer.telerik.com/feed'
+                'http://developer.telerik.com/feed',
+                'http://isomorphic.net/feeds/rss',
+                'http://colintoh.com/blog/feed'
 
             ]
         }
     },
 
-    // all nicknames lowerCase !!
     admins: {
         '_pid': false,
         '_pid_': false,
