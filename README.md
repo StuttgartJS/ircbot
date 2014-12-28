@@ -41,8 +41,8 @@ retrieve feeds and send new items to the channel(s)
 -	!rss // print status (ON or OFF)
 -	!rss on // activate channel news posting
 -	!rss off // deactivate channel news posting
--	!rss lastest // get latest news
--	!rss lastest 5 // get the 5 latest news
+-	!rss latest // get latest news
+-	!rss latest 5 // get the 5 latest news
 -	!rss feeds // list all feeds
 
 ```
