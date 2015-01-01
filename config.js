@@ -165,7 +165,8 @@ module.exports = {
                 'http://www.internetworld.de/INTERNET-WORLD-Business-Newsfeed.html',
                 'http://developer.telerik.com/feed',
                 'http://isomorphic.net/feeds/rss',
-                'http://colintoh.com/blog/feed'
+                'http://colintoh.com/blog/feed',
+                'http://calendar.perfplanet.com/feed/'
 
             ]
         }
