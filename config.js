@@ -166,7 +166,8 @@ module.exports = {
                 'http://developer.telerik.com/feed',
                 'http://isomorphic.net/feeds/rss',
                 'http://colintoh.com/blog/feed',
-                'http://calendar.perfplanet.com/feed/'
+                'http://calendar.perfplanet.com/feed/',
+                'http://first-time-ceo.tumblr.com/rss'
 
             ]
         }
