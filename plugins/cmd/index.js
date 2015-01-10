@@ -147,9 +147,9 @@ function help() {
     debug('HELP');
 
     return (
-        color.bold.red.bgyellow('===============================================================================') +
+        color.bold.red.bgyellow('===============================================================================\n') +
         color.bold.red.bgyellow('CMD Plugin\n') +
-        color.bold.red.bgyellow('===============================================================================') +
+        color.bold.red.bgyellow('===============================================================================\n') +
         color.bold.red.bgyellow('!cmd msg <#channel> <your message> // send a message as bot\n') +
         color.bold.red.bgyellow('!cmd admin <nickname> 1|0 // set admin rights\n') +
         color.bold.red.bgyellow('!cmd [+|-]op <#channel> <nickname> // give|take nickname channel-op on #channel\n') +
