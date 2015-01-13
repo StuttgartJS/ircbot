@@ -193,7 +193,9 @@ function init(client, config) {
             config.admins[cmd.user] = true;
 
             config.irc.options.channels.forEach(function(channel){
-                client.send('MODE', channel, cmd.mode, cmd.user);
+                if(cmd.user !== cmd.nick && !utils.isBotMessage(cmd.user, config)) {
+                    client.send('MODE', channel, cmd.mode, cmd.user);
+                }
             });
 
             if (config.plugins && config.plugins.auth && config.plugins.auth.notify) {
