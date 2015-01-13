@@ -140,7 +140,6 @@ module.exports = {
                 'http://feeds.feedblitz.com/derickbailey',
                 'http://simpleprogrammer.com/feed/',
                 'http://joshuaearl.com/feed/',
-                'http://de.letsseewhatworks.com/feed/',
                 'http://programmingpraxis.com/feed/',
                 'http://xkcd.com/atom.xml',
                 'http://feeds.feedburner.com/codinghorror',
